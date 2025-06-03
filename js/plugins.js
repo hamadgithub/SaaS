@@ -1,1 +1,17 @@
-(document.querySelectorAll("[toast-list]")||document.querySelectorAll("[data-choices]")||document.querySelectorAll("[data-provider]"))&&(document.writeln("<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/toastify-js'><\/script>"),document.writeln("<script type='text/javascript' src='assets/libs/choices.js/public/assets/scripts/choices.min.js'><\/script>"),document.writeln("<script type='text/javascript' src='assets/libs/flatpickr/flatpickr.min.js'><\/script>"));
+// Check if elements exist before loading optional dependencies
+const hasToastList = document.querySelectorAll("[toast-list]").length > 0;
+const hasChoices = document.querySelectorAll("[data-choices]").length > 0;
+const hasDatePicker = document.querySelectorAll("[data-provider]").length > 0;
+
+// Only load scripts if their functionality is needed
+if (hasToastList) {
+    import('https://cdn.jsdelivr.net/npm/toastify-js');
+}
+
+if (hasChoices) {
+    import('./libs/choices.js/public/assets/scripts/choices.min.js');
+}
+
+if (hasDatePicker) {
+    import('./libs/flatpickr/flatpickr.min.js');
+}
